@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div class="header" th:fragment="header">
+    <div class="links_container">
+        <div class="header_container">
+            <div class="header_left">
+                <a class="header_logo" href="/static">Control + V</a>
+                <div class="header_links">
+                    <a class="link" href="https://github.com/Oraleecy/pastebin" target="_blank">source code</a>
+                </div>
+                <a class="header__btn" href="/static">
+                    <span>paste</span>
+                </a>
+                <div class="header_search">
+                    <form class="search_form" th:action="@{/search}" method="get">
+                        <label>
+                            <input type="text" class="search_input" placeholder="Search..." maxlength="128">
+                        </label>
+                        <button type="submit" class="search_btn" aria-label="Search">
+                            <svg class="icon_search">
+                                <use xlink:href="#search"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="header_right">
+                <div class="header_sign">
+                    <a href="/login" class="btn-sign-in">Login</a>
+                    <a href="/signup" class="btn-sign-up">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
