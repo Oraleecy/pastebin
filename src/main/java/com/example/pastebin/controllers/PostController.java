@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
 
 
 @Controller
-@RequestMapping("/")
 class PostController {
     private final PostRepository postRepository;
     private final CloudStorageManager cloudStorageManager;
@@ -35,7 +34,7 @@ class PostController {
         this.shortUrlGeneratorSequenceRepository = shortUrlGeneratorSequenceRepository;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public String index(Model model) {
         Post post = new Post();
         Content content = new Content();
@@ -44,6 +43,11 @@ class PostController {
         return "index";
     }
 
+    @GetMapping("/favicon.ico")
+    @ResponseBody
+    void returnNoFavicon() {
+        // Этот метод просто возвращает пустое тело ответа, что указывает браузеру, что иконка не предоставляется.
+    }
     @PostMapping("/create_paste")
     public String createPost(@ModelAttribute("post") Post post,
                              @ModelAttribute("content") Content content,
@@ -58,7 +62,6 @@ class PostController {
 
         LocalDateTime timeNow = LocalDateTime.now();
         post.setDateOfPublication(timeNow);
-//        System.out.println(s);
         cloudStorageManager.writeFile(url, content.getValue());
         postRepository.save(post);
         return "redirect:/" + url;
@@ -71,7 +74,5 @@ class PostController {
         model.addAttribute("content", cloudStorageManager.readFile(generatedUrl));
         return "post_view";
     }
-
-
 }
 
