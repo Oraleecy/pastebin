@@ -9,7 +9,7 @@
 <div th:replace="~{fragments/header.html :: header}"></div>
 <div class="wrap">
     <div class="container">
-        <form class="paste-form" th:action="@{/create_paste }" method="post">
+        <form class="paste-form" th:action="@{/create_paste}" method="post">
             <div class="paste-header">New Paste</div>
             <div class="form-textarea">
             <textarea id="contentField" class="text-field" contenteditable th:field="*{content.value}"
@@ -41,10 +41,10 @@
                             <input type="text" th:field="*{post.title}">
                         </label>
                     </div>
-                    <div class="form-group form-btn-container">
-                        <button type="submit" class="btn">Create New Paste</button>
-                    </div>
                 </div>
+            </div>
+            <div class="form-group form-btn-container">
+                <button type="submit" class="btn">Create New Paste</button>
             </div>
         </form>
     </div>

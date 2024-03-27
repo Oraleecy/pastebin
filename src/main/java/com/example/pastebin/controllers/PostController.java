@@ -59,15 +59,12 @@ class PostController {
         String url = shortUrlGenerator.generateUrlFromLong(nextValue);
         post.setContentUrl(url);
 
-
         LocalDateTime timeNow = LocalDateTime.now();
         post.setDateOfPublication(timeNow);
         cloudStorageManager.writeFile(url, content.getValue());
         postRepository.save(post);
         return "redirect:/" + url;
     }
-
-
     @GetMapping("/{generatedUrl}")
     public String showPost(@PathVariable String generatedUrl, Model model) throws IOException {
         model.addAttribute("post", postRepository.findByContentUrl(generatedUrl));
