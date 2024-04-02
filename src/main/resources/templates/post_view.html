@@ -5,14 +5,19 @@
       xsi:schemaLocation="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <!--/*@thymesVar id="Post" type="com.example.pastebin.models.Post"*/-->
-    <title></title>
+    <title th:text="${post.getTitle()}"
+    ></title>
+    <link th:href="@{/css/styles.css}" href="../static/css/styles.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
+<div th:replace="~{fragments/header.html :: header}"></div>
+<br>
+<br>
+<br>
 <div th:text="${post.getTitle()}"></div>
 <div th:text="${post.getDateOfPublication()}"></div>
 <div th:text="${content}"></div>
 <div>There will be a unique view counter here</div>
-<!--<div th:text="${content}"></div>-->
+
 </body>
 </html>
