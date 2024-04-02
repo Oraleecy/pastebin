@@ -67,7 +67,11 @@ class PostController {
     }
     @GetMapping("/{generatedUrl}")
     public String showPost(@PathVariable String generatedUrl, Model model) throws IOException {
-        model.addAttribute("post", postRepository.findByContentUrl(generatedUrl));
+        Post post = postRepository.findByContentUrl(generatedUrl);
+        if (post == null) {
+            return "404";
+        }
+        model.addAttribute("post", post);
         model.addAttribute("content", cloudStorageManager.readFile(generatedUrl));
         return "post_view";
     }
