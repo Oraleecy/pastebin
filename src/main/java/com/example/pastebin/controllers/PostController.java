@@ -46,12 +46,10 @@ class PostController {
     @GetMapping("/favicon.ico")
     @ResponseBody
     void returnNoFavicon() {
-        // Этот метод просто возвращает пустое тело ответа, что указывает браузеру, что иконка не предоставляется.
     }
     @PostMapping("/create_paste")
     public String createPost(@ModelAttribute("post") Post post,
                              @ModelAttribute("content") Content content,
-//                             @RequestParam("expriationDateOpt") String s,
                              Model model) {
         model.addAttribute("post", post);
         model.addAttribute("content", content);
@@ -61,6 +59,9 @@ class PostController {
 
         LocalDateTime timeNow = LocalDateTime.now();
         post.setDateOfPublication(timeNow);
+        if (post.getTitle().isBlank()) {
+            post.setTitle("Untiled");
+        }
         cloudStorageManager.writeFile(url, content.getValue());
         postRepository.save(post);
         return "redirect:/" + url;

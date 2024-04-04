@@ -23,7 +23,8 @@
                         <label class="control-label">Category:
                             <select name="Category">
                                 <option th:each="categoryOpt: ${T(com.example.pastebin.models.Category).values()}"
-                                        th:value="${categoryOpt}" th:text="${categoryOpt.getDisplayValue()}"></option>
+                                        th:value="${categoryOpt.getDisplayValue()}"
+                                        th:text="${categoryOpt.getDisplayValue()}"></option>
                             </select>
                         </label>
                     </div>
@@ -31,7 +32,7 @@
                         <label class="control-label">Paste Expiration:
                             <select name="ExpirationDateEnum">
                                 <option th:each="expriationDateOpt: ${T(com.example.pastebin.models.ExpirationDateEnum).values()}"
-                                        th:value="${expriationDateOpt}"
+                                        th:value="${expriationDateOpt.getDisplayValue()}"
                                         th:text="${expriationDateOpt.getDisplayValue()}"></option>
                             </select>
                         </label>

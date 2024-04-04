@@ -16,16 +16,14 @@ public class Post {
     @Column(name = "title")
     private String title;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
-
 
     @Column(name = "date_of_publication")
     private LocalDateTime dateOfPublication;
     @Column(name = "expiration_date")
     private LocalDateTime expirationDate;
 
+    @Column(name = "category")
+    public String category;
 
     public String getTitle() {
         return title;
@@ -34,19 +32,6 @@ public class Post {
     public void setTitle(String title) {
         this.title = title;
     }
-
-//    public void setId(long id) {
-//        this.id = id;
-//    }
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-
 
     public String getContentUrl() {
         return contentUrl;
@@ -70,6 +55,15 @@ public class Post {
 
     public void setExpirationDate(LocalDateTime expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override
