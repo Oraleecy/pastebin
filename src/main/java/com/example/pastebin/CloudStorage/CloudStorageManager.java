@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+// TODO заменить stringBuilder на stringBuffer
 
 @Component
 public class CloudStorageManager {
